@@ -1,0 +1,30 @@
+{% extends "listing/base.html" %}
+
+{% block content %}
+<div class="section cms-hero">
+  <div class="container">
+    <div class="header-wrap">
+      <h1 class="cms-heading">Events</h1>
+    </div>
+    <div class="w-dyn-list">
+      <div role="list" class="grid-half rooms-page w-dyn-items">
+        {% for event in events %}
+        <div role="listitem" class="collection-item w-dyn-item">
+            <a href="{% url 'event_detail' event.id %}" class="card w-inline-block">
+
+            <div class="gradient-overlay"></div>
+            <div class="card-photo-mask">
+              <img src="{{ event.image.url }}" loading="lazy" alt="" class="card-photo" />
+            </div>
+            <div class="card-content">
+              <div class="large-text">{{ event.title }}</div>
+              <div class="price">{{ event.date }}</div>
+            </div>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
